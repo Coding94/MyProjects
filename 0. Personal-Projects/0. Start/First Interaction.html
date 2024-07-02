@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <title>The Library</title>
+
+</head>
+<style>
+  body{
+    font-family: Apple Chancery, cursive;
+    background-color:rgb(123, 88, 72);
+    }
+
+  .title {
+    font-size:50px;
+    color: rgb(192, 178, 84);
+    text-align: center;
+    text-shadow: 
+        -1px -1px 0 black,  
+        1px -1px 0 black,
+        -1px  1px 0 black,
+        1px  1px 0 black;
+   }
+   .flex{
+    display: flex;
+    margin-top:180px;
+    flex-wrap: wrap;
+    justify-content: center;
+   }
+  
+  .booktitles {
+
+    font-size:35px;
+    color: rgb(197, 151, 60);
+    
+    cursor: grab;
+    text-align: center;
+    line-height: 3;
+    text-shadow:
+    -1px -1px 0 black,  
+    1px -1px 0 black,
+    -1px  1px 0 black,
+    1px  1px 0 black;
+  }
+
+  .booktitles a:hover {
+  color: rgb(232, 229, 229);
+  }
+
+  .booktitles a{
+  text-decoration: none;
+  color: rgb(197, 151, 60);
+  }
+
+  .TheBible p, .Book2 p, .Book3 p{
+  margin:0
+  }
+
+  .BookFeatures {
+    width: 180px;
+    height: 360px;
+    border: 3px solid rgb(0, 0, 0);
+    border-radius: 5px;
+    margin-inline: 10px;
+  }
+
+  .TheBible{
+    background-color: rgb(40, 43, 50);
+  }
+  .Book2 {
+    background-color: rgb(75, 27, 27);
+  }
+  .Book3 {
+    background-color: rgb(40, 51, 43); 
+  }
+
+  @media (max-height: 500px) {
+  .flex{
+    margin-top: 50px;
+
+    background-color: rgb(174, 60, 197);
+    padding-bottom: 50px;
+
+  }}
+
+  @keyframes clickEffect {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.1);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    .click-animation {
+      animation: clickEffect 0.3s ease;
+    }
+
+</style>
+
+<body class = "custom-cursor background"> 
+    <p class = "aligncenter title"> The JS Library </p>
+      <div class = "booktitles flex" >
+        <a href = "../1. The Bible/The Bible.html" class = " BookFeatures TheBible"> <p> The Bible</p></a>
+        <a class = "BookFeatures Book2"> <p>Game Dev </p> </a>
+        <a class = "BookFeatures Book3"> <p> Pixel Art </p> </a>
+      </div>
+    </div>
+
+    <audio id="clickSound">
+      <source src="Click.mp3" type="audio/mpeg">
+    </audio>
+  
+    <script>
+
+function handleClick(event) {
+    event.preventDefault();
+
+    function playClickSound() {
+      var audio = document.querySelector("#clickSound");
+      if (audio) {
+        audio.currentTime = 0;
+        audio.play();
+      }
+    }
+
+
+  playClickSound();
+
+// Redirect to The Bible.html if the clicked link has the class 'TheBible'
+if (event.currentTarget.classList.contains('TheBible')) {
+  setTimeout(function() {
+    window.location.href = "../1. The Bible/The Bible.html";
+  }, 300); // Adjust delay as needed for animation
+} else {
+  setTimeout(function() {
+    window.location.href = event.currentTarget.href;
+  }, 300); // Adjust delay as needed for animation
+}
+}
+
+// Attach click event listeners to book titles
+document.querySelectorAll('.booktitles a').forEach(item => {
+item.addEventListener('click', handleClick);
+});
+
+    </script>
+   
+</body>
+</html>
+
